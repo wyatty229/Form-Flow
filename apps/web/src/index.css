@@ -1,0 +1,38 @@
+
+/*
+  TEMPLATE STYLES: These styles are used as a base template.
+  AI is allowed to modify these styles as needed.
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #4A90E2;
+  --color-text: #2A2A2A;
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F8F9FA;
+  --color-border: #E0E0E0;
+}
+
+body {
+	@apply bg-white text-[#2A2A2A];
+	font-family: 'DM Sans', sans-serif;
+  line-height: 1.8; /* leading-loose equivalent globally */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply tracking-tight;
+}
+
+.btn-primary {
+  @apply bg-[#4A90E2] text-white hover:bg-[#357ABD] transition-all duration-300 shadow-sm hover:shadow-md;
+}
+
+.btn-secondary {
+  @apply bg-white text-[#4A90E2] border border-[#4A90E2] hover:bg-[#F0F7FF] transition-all duration-300;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[#4A90E2]/30;
+}
