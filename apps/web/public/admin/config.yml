@@ -2,15 +2,396 @@ backend:
   name: git-gateway
   branch: main
 
+# Where uploaded images go (stored in GitHub)
 media_folder: "apps/web/public/uploads"
 public_folder: "/uploads"
 
+# Optional: nicer editor experience
+publish_mode: editorial_workflow
+
 collections:
-  - name: "pages"
-    label: "Pages"
-    folder: "apps/web/content/pages"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+  # =========================
+  # Global Site Settings
+  # =========================
+  - name: "settings"
+    label: "Site Settings"
+    editor:
+      preview: false
+    files:
+      - file: "apps/web/content/settings/site.yml"
+        label: "Global"
+        name: "global"
+        fields:
+          - { label: "Brand Name", name: "brandName", widget: "string" }
+          - { label: "Site Title (SEO default)", name: "seoTitle", widget: "string" }
+          - { label: "Site Description (SEO default)", name: "seoDescription", widget: "text" }
+
+          - label: "Header Navigation"
+            name: "nav"
+            widget: "object"
+            fields:
+              - label: "Primary CTA Label"
+                name: "primaryCtaLabel"
+                widget: "string"
+              - label: "Primary CTA Link"
+                name: "primaryCtaHref"
+                widget: "string"
+                default: "/contact"
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Copyright Line", name: "copyright", widget: "string" }
+              - label: "Footer Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+
+          - label: "Global CTA (used across pages)"
+            name: "globalCta"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - { label: "Primary Button Label", name: "primaryLabel", widget: "string" }
+              - { label: "Primary Button Link", name: "primaryHref", widget: "string", default: "/contact" }
+              - { label: "Secondary Button Label", name: "secondaryLabel", widget: "string", required: false }
+              - { label: "Secondary Button Link", name: "secondaryHref", widget: "string", required: false }
+
+  # =========================
+  # Home Page
+  # =========================
+  - name: "home"
+    label: "Home Page"
+    editor:
+      preview: false
+    files:
+      - file: "apps/web/content/pages/home.yml"
+        label: "Home Content"
+        name: "homeContent"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - { label: "Primary Button Label", name: "primaryLabel", widget: "string" }
+              - { label: "Primary Button Link", name: "primaryHref", widget: "string", default: "/contact" }
+              - { label: "Secondary Button Label", name: "secondaryLabel", widget: "string", required: false }
+              - { label: "Secondary Button Link", name: "secondaryHref", widget: "string", required: false }
+
+          - label: "Trust Items"
+            name: "trustItems"
+            widget: "list"
+            fields:
+              - { label: "Text", name: "text", widget: "string" }
+
+          - label: "Problem Cards"
+            name: "problemCards"
+            widget: "list"
+            fields:
+              - { label: "Problem", name: "problem", widget: "string" }
+              - { label: "Outcome", name: "outcome", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Homepage Services (teaser cards)"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "feature", widget: "string" }
+
+          - label: "Timeline"
+            name: "timeline"
+            widget: "list"
+            fields:
+              - { label: "Step (e.g. 01)", name: "step", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Benefits"
+            name: "benefits"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Content", name: "content", widget: "text" }
+              - { label: "Rating (1-5)", name: "rating", widget: "number", value_type: "int", min: 1, max: 5 }
+
+          - label: "FAQs"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+
+  # =========================
+  # Services Page
+  # =========================
+  - name: "services"
+    label: "Services Page"
+    editor:
+      preview: false
+    files:
+      - file: "apps/web/content/pages/services.yml"
+        label: "Services Content"
+        name: "servicesContent"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+
+          - label: "Service Blocks"
+            name: "serviceBlocks"
+            widget: "list"
+            fields:
+              - { label: "ID (no spaces)", name: "id", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+              - label: "What's Included"
+                name: "whatsIncluded"
+                widget: "list"
+                field: { label: "Item", name: "item", widget: "string" }
+
+              - label: "Who It's For"
+                name: "whoItsFor"
+                widget: "list"
+                field: { label: "Item", name: "item", widget: "string" }
+
+              - label: "Use Cases"
+                name: "useCases"
+                widget: "list"
+                field: { label: "Use Case", name: "useCase", widget: "string" }
+
+              - label: "Feature Bullets"
+                name: "featureBullets"
+                widget: "list"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+
+  # =========================
+  # Pricing Page
+  # =========================
+  - name: "pricing"
+    label: "Pricing Page"
+    editor:
+      preview: false
+    files:
+      - file: "apps/web/content/pages/pricing.yml"
+        label: "Pricing Content"
+        name: "pricingContent"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+
+          - label: "Pricing Tiers"
+            name: "tiers"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Price (number only)", name: "price", widget: "number", value_type: "int", min: 0 }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "CTA Label", name: "cta", widget: "string" }
+              - { label: "Highlighted", name: "highlighted", widget: "boolean", default: false }
+              - { label: "Badge (optional)", name: "badge", widget: "string", required: false }
+
+              - label: "Included Features"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "feature", widget: "string" }
+
+              - label: "Not Included"
+                name: "notIncluded"
+                widget: "list"
+                required: false
+                field: { label: "Item", name: "item", widget: "string" }
+
+          - label: "Comparison Table"
+            name: "comparison"
+            widget: "list"
+            fields:
+              - { label: "Category", name: "category", widget: "string" }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                fields:
+                  - { label: "Feature Name", name: "name", widget: "string" }
+                  - { label: "Basic (true/false or text)", name: "basic", widget: "string" }
+                  - { label: "Standard (true/false or text)", name: "standard", widget: "string" }
+                  - { label: "Pro (true/false or text)", name: "pro", widget: "string" }
+
+  # =========================
+  # About Page
+  # =========================
+  - name: "about"
+    label: "About Page"
+    editor:
+      preview: false
+    files:
+      - file: "apps/web/content/pages/about.yml"
+        label: "About Content"
+        name: "aboutContent"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Number", name: "number", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+          - label: "Our Story (paragraphs)"
+            name: "story"
+            widget: "list"
+            field: { label: "Paragraph", name: "paragraph", widget: "text" }
+
+          - label: "Mission Quote"
+            name: "mission"
+            widget: "object"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+
+          - label: "Core Values"
+            name: "coreValues"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Culture Highlights"
+            name: "culture"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  # =========================
+  # How It Works Page
+  # =========================
+  - name: "howitworks"
+    label: "How It Works Page"
+    editor:
+      preview: false
+    files:
+      - file: "apps/web/content/pages/how-it-works.yml"
+        label: "How It Works Content"
+        name: "howItWorksContent"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            fields:
+              - { label: "Step (e.g. 01)", name: "step", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  # =========================
+  # Contact Page
+  # =========================
+  - name: "contact"
+    label: "Contact Page"
+    editor:
+      preview: false
+    files:
+      - file: "apps/web/content/pages/contact.yml"
+        label: "Contact Content"
+        name: "contactContent"
+        fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+
+          - label: "Contact Cards"
+            name: "contactCards"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Value", name: "value", widget: "string" }
+              - { label: "Hint (optional)", name: "hint", widget: "string", required: false }
