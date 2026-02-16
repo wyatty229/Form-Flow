@@ -1,0 +1,7 @@
+headline: "Simple pricing"
+subheadline: "Pick a package that fits your business."
+tiers:
+  - name: "Basic"
+    price: "$XXX"
+    description: "One hosted lead/booking page."
+    features: ["Lead capture","Booking embed","Basic analytics"]

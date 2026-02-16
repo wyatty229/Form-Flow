@@ -1,3 +1,5 @@
+import { cms } from "@/content/cms";
+	const content = cms.pages.home || {};
 
 import React from 'react';
 import { useState } from 'react';

@@ -6,6 +6,7 @@ backend:
 media_folder: "apps/web/public/uploads"
 public_folder: "/uploads"
 
+<<<<<<< HEAD
 # Optional: nicer editor experience
 publish_mode: editorial_workflow
 
@@ -37,6 +38,32 @@ collections:
                 name: "primaryCtaHref"
                 widget: "string"
                 default: "/contact"
+=======
+publish_mode: editorial_workflow
+
+collections:
+  - name: "site"
+    label: "Website Content"
+    editor: { preview: false }
+    files:
+      - file: "apps/web/content/site.yml"
+        label: "Site"
+        name: "site"
+        fields:
+          - label: "Brand"
+            name: "brand"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string", required: false }
+
+          - label: "Navigation"
+            name: "nav"
+            widget: "object"
+            fields:
+              - { label: "Primary CTA Label", name: "primaryCtaLabel", widget: "string" }
+              - { label: "Primary CTA Link", name: "primaryCtaHref", widget: "string" }
+>>>>>>> 0124c1f (Add Decap CMS + single site.yml content model)
               - label: "Links"
                 name: "links"
                 widget: "list"
@@ -44,6 +71,7 @@ collections:
                   - { label: "Label", name: "label", widget: "string" }
                   - { label: "Href", name: "href", widget: "string" }
 
+<<<<<<< HEAD
           - label: "Footer"
             name: "footer"
             widget: "object"
@@ -57,11 +85,115 @@ collections:
                   - { label: "Href", name: "href", widget: "string" }
 
           - label: "Global CTA (used across pages)"
+=======
+          - label: "Home"
+            name: "home"
+            widget: "object"
+            fields:
+              - label: "Hero"
+                name: "hero"
+                widget: "object"
+                fields:
+                  - { label: "Headline", name: "headline", widget: "string" }
+                  - { label: "Subheadline", name: "subheadline", widget: "text" }
+                  - { label: "Primary Button Label", name: "primaryLabel", widget: "string" }
+                  - { label: "Primary Button Link", name: "primaryHref", widget: "string" }
+                  - { label: "Secondary Button Label", name: "secondaryLabel", widget: "string", required: false }
+                  - { label: "Secondary Button Link", name: "secondaryHref", widget: "string", required: false }
+
+              - label: "Homepage Service Cards"
+                name: "services"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Features (optional)"
+                    name: "features"
+                    widget: "list"
+                    required: false
+                    field: { label: "Feature", name: "feature", widget: "string" }
+
+          - label: "Services Page"
+            name: "servicesPage"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - label: "Service Blocks"
+                name: "blocks"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Bullets"
+                    name: "bullets"
+                    widget: "list"
+                    field: { label: "Bullet", name: "bullet", widget: "string" }
+
+          - label: "Pricing Page"
+            name: "pricing"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - label: "Tiers"
+                name: "tiers"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Features"
+                    name: "features"
+                    widget: "list"
+                    field: { label: "Feature", name: "feature", widget: "string" }
+                  - { label: "Featured", name: "featured", widget: "boolean", default: false }
+
+          - label: "About Page"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+
+          - label: "How It Works"
+            name: "howItWorks"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          - label: "Contact Page"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subheadline", name: "subheadline", widget: "text" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+
+          - label: "Global CTA Section"
+>>>>>>> 0124c1f (Add Decap CMS + single site.yml content model)
             name: "globalCta"
             widget: "object"
             fields:
               - { label: "Headline", name: "headline", widget: "string" }
               - { label: "Subheadline", name: "subheadline", widget: "text" }
+<<<<<<< HEAD
               - { label: "Primary Button Label", name: "primaryLabel", widget: "string" }
               - { label: "Primary Button Link", name: "primaryHref", widget: "string", default: "/contact" }
               - { label: "Secondary Button Label", name: "secondaryLabel", widget: "string", required: false }
@@ -395,3 +527,7 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Value", name: "value", widget: "string" }
               - { label: "Hint (optional)", name: "hint", widget: "string", required: false }
+=======
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Button Link", name: "buttonHref", widget: "string" }
+>>>>>>> 0124c1f (Add Decap CMS + single site.yml content model)

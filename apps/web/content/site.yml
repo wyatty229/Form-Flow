@@ -1,0 +1,91 @@
+brand:
+  name: "Form & Flow"
+  tagline: "Elegant, modern sites that convert."
+
+nav:
+  primaryCtaLabel: "Book a Demo"
+  primaryCtaHref: "/contact"
+  links:
+    - { label: "Home", href: "/" }
+    - { label: "Services", href: "/services" }
+    - { label: "Pricing", href: "/pricing" }
+    - { label: "How It Works", href: "/how-it-works" }
+    - { label: "About", href: "/about" }
+    - { label: "Contact", href: "/contact" }
+
+home:
+  hero:
+    headline: "A website that books customers for you."
+    subheadline: "We build your site, capture leads, and automate scheduling—so your business runs smoother."
+    primaryLabel: "Get Started"
+    primaryHref: "/contact"
+    secondaryLabel: "See Pricing"
+    secondaryHref: "/pricing"
+  services:
+    - title: "Website Building"
+      description: "Modern, conversion-focused websites designed to turn visitors into customers."
+    - title: "Lead Capture"
+      description: "Forms and funnels that qualify leads and get you more calls."
+    - title: "Appointment Booking"
+      description: "Scheduling that works 24/7 with reminders and automation."
+    - title: "AI Chat"
+      description: "Instant answers and lead qualification even when you’re offline."
+
+servicesPage:
+  headline: "Services that convert"
+  subheadline: "Fast, clean, and built to generate leads."
+  blocks:
+    - title: "Website Building"
+      description: "Full websites or landing pages with premium design."
+      bullets: ["Fast load times", "Mobile-first", "SEO-ready"]
+
+pricing:
+  headline: "Simple pricing"
+  subheadline: "Pick a package that fits your business."
+  tiers:
+    - name: "Basic"
+      price: "$XXX"
+      description: "One hosted lead/booking page embedded into your existing site."
+      features: ["Hosted page", "Lead capture", "Basic analytics"]
+      featured: false
+    - name: "Standard"
+      price: "$XXX"
+      description: "Full redesign with up to 5 pages and light revisions."
+      features: ["Up to 5 pages", "SEO basics", "Conversion-focused layout"]
+      featured: true
+    - name: "Pro"
+      price: "$XXX"
+      description: "Everything + automations and advanced integrations."
+      features: ["Automations", "Advanced tracking", "Priority support"]
+      featured: false
+
+about:
+  headline: "About"
+  subheadline: "We build elegant websites that help local businesses grow."
+  paragraphs:
+    - "Our focus is speed, clarity, and conversions."
+    - "You get a premium online presence without the complexity."
+
+howItWorks:
+  headline: "How it works"
+  subheadline: "A simple process from idea to launch."
+  steps:
+    - title: "Discovery"
+      description: "We align on goals, offer, and structure."
+    - title: "Build"
+      description: "We design and implement the site + automations."
+    - title: "Launch"
+      description: "We publish, connect the domain, and verify tracking."
+
+contact:
+  headline: "Contact"
+  subheadline: "Tell us about your project."
+  cards:
+    - label: "Email"
+      value: "you@example.com"
+
+globalCta:
+  headline: "Ready to launch a premium site?"
+  subheadline: "Book a demo and we’ll map the fastest path to results."
+  buttonLabel: "Book a Demo"
+  buttonHref: "/contact"

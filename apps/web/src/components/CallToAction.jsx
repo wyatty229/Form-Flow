@@ -2,6 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { cms } from "../content/cms";
+	const cta = (cms.site || {}).globalCta || {};
+
+
+
 
 const CallToAction = () => {
   return (

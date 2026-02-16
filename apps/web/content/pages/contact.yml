@@ -1,0 +1,5 @@
+headline: "Contact"
+subheadline: "Tell us about your project."
+cards:
+  - label: "Email"
+    value: "you@example.com"

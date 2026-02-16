@@ -1,0 +1,8 @@
+hero:
+  headline: "A website that books customers for you."
+  subheadline: "We build your site, capture leads, and automate scheduling—so your business runs smoother."
+services:
+  - title: "Website Building"
+    description: "Modern, conversion-focused sites built for speed and clarity."
+  - title: "Lead Capture"
+    description: "Forms and funnels that qualify leads automatically."

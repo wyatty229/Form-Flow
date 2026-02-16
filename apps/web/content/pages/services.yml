@@ -1,0 +1,6 @@
+headline: "Services that convert"
+subheadline: "High-performance pages and automations designed to turn traffic into booked appointments."
+serviceBlocks:
+  - title: "Website Building"
+    description: "Full sites or landing pages with modern UX."
+    bullets: ["Fast builds","Mobile-first","SEO-ready"]

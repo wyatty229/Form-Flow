@@ -4,6 +4,13 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { cms } from "../content/cms";
+	const site = cms.site || {};
+	const brandName = site.brand?.name || "Form & Flow";
+	const primaryCtaLabel = site.nav?.primaryCtaLabel || "Book a Demo";
+	const primaryCtaHref = site.nav?.primaryCtaHref || "/contact";
+	const links = site.nav?.links || [];
+
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
